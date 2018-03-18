@@ -9,7 +9,7 @@
 #include <unistd.h>
 
 //void error_handling(char* message);
-int main(void)
+/*int main(void)
 {
 	int fd;
 	char buf[]="Let' go\n";
@@ -31,14 +31,14 @@ int main(void)
 
 	close(fd);
 	return 0;
-}
+}*/
 
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
-#define BUF_SIZE 100
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <fcntl.h>
+// #include <unistd.h>
+ #define BUF_SIZE 100
 
 int main(void)
 {
@@ -50,6 +50,8 @@ int main(void)
 	close(fd);
 	return 0;
 }
+
+
 
 // void error_handling(char* message)
 // {

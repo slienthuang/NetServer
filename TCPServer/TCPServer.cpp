@@ -5,6 +5,7 @@
 #include <arpa/inet.h>
 #include <sys/socket.h>
 
+
 int main()
 {
 	int server_sock; 
@@ -24,7 +25,7 @@ int main()
 	memset(&server_addr,0,sizeof(server_addr));
 	server_addr.sin_family=AF_INET;
 	server_addr.sin_addr.s_addr=htonl(INADDR_ANY);
-	server_addr.sin_port = htons(6888);
+	server_addr.sin_port = htons(6188);
 
 	if(bind(server_sock,(struct sockaddr*)&server_addr,sizeof(server_addr))==-1)
 		printf("bind error1");
@@ -33,11 +34,24 @@ int main()
 		printf("listen error1");
 
 	client_addr_size = sizeof(client_addr);
-	client_sock = accept(server_sock,(struct sockaddr*)&client_addr,&client_addr_size);
+	int count=0;
+	while(1)
+	{
+		// sprintf(message,"hello:%d",count);
+		// count++;
+		client_sock = accept(server_sock,(struct sockaddr*)&client_addr,&client_addr_size);
+		// char* msg;
+		// count++;
+		// sprintf(msg,"%s%d",message,count);
+		// 
+		
+		read(client_sock,message,sizeof(message));
+		printf("%s",message);
 
-	write(client_sock,message,sizeof(message));
+		write(client_sock,message,sizeof(message));
 
-	close(client_sock);
+		close(client_sock);
+	}
 	close(server_sock);
 	return 0;
 }
